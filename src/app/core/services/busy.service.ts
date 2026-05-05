@@ -5,13 +5,13 @@ import { computed, Injectable, signal } from '@angular/core';
 })
 export class BusyService {
 // Contador reactivo de requests en curso
-  private busyCount = signal(0);
+  busyRequestCount = signal(0);
 
   // Señal derivada para el estado de carga
-  readonly loading = computed(() => this.busyCount() > 0);
+  readonly loading = computed(() => this.busyRequestCount() > 0);
 
   busy(timeoutMs: number = 2000) {
-    this.busyCount.update(c => c + 1);
+    this.busyRequestCount.update(c => c + 1);
 
     // Tiempo máximo de visibilidad (opcional)
     const timerId = setTimeout(() => this.idle(), timeoutMs);
@@ -19,6 +19,6 @@ export class BusyService {
   }
 
   idle() {
-    this.busyCount.update(c => Math.max(0, c - 1));
+    this.busyRequestCount.update(c => Math.max(0, c - 1));
   }
 }
