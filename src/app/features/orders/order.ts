@@ -16,7 +16,8 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 })
 export class Order implements OnInit {
   private orderService = inject(OrderService);
-  orders = signal<OrderModel[] | null>(null);
+  // orders = signal<OrderModel[] | null>(null);
+  orders = signal<OrderModel[]>([]);
 
   ngOnInit(): void {
     this.orderService.getOrdersForUser().subscribe({

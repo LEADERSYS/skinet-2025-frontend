@@ -31,7 +31,8 @@ export class OrderDetailed implements OnInit{
   private adminService = inject(AdminService);
   private router = inject(Router);
 
-  order = signal<Order | null>(null);
+  // order = signal<Order | null>(null);
+  order = signal<Order | undefined>(undefined);
   buttonText = this.accountService.isAdmin() ? 'Return to admin' : 'Return to orders'
 
   ngOnInit(): void {
@@ -53,7 +54,7 @@ export class OrderDetailed implements OnInit{
       : this.orderService.getOrderDetailed(+id);
 
     this.orderService.getOrderDetailed(+id).subscribe({
-      next: order => this.order?.set(order)
+      next: order => this.order.set(order)
     })
   }
 }

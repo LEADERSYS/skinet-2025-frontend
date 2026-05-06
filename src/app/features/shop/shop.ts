@@ -43,6 +43,7 @@ export class Shop implements OnInit {
     count: 0,
     data: []
   });
+  // products = signal<Pagination<Product> | undefined>(undefined);
 
   // selectedBrands = signal<string[]>([]);
   // selectedTypes = signal<string[]>([]);
@@ -78,7 +79,7 @@ export class Shop implements OnInit {
     this.shopService.getProducts(this.shopParams).subscribe({
       next: response => {
         // console.log('Products received:', response);
-        this.products?.set(response);
+        this.products.set(response);
       },
       error: error => console.log(error)
     })

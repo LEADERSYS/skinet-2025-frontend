@@ -46,16 +46,23 @@ export class TestError {
     })
   }
 
+  // getValidationError() {
+  //   this.http.post(this.baseUrl + 'buggy/validationerror', {}).subscribe({
+  //     next: response => {
+  //       console.log(response),
+  //       this.validationErrors.set(undefined);
+  //     },  
+  //     error: error => {
+  //       console.log(error)
+  //       this.validationErrors.set(error)
+  //     }
+  //   });
+  // }
+
   getValidationError() {
     this.http.post(this.baseUrl + 'buggy/validationerror', {}).subscribe({
-      next: response => {
-        console.log(response),
-        this.validationErrors.set(undefined);
-      },  
-      error: error => {
-        console.log(error)
-        this.validationErrors.set(error)
-      }
+      next: response => console.log(response),
+        error: error => this.validationErrors.set(error)
     });
   }
 }

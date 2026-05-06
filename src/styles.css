@@ -8,6 +8,7 @@
 
 .text-primary {
     @apply text-blue-700
+    /* @apply color: #7d00fa */
 }
 
 @layer base {
